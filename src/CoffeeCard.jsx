@@ -1,10 +1,18 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import Avatar from "@material-ui/core/Avatar";
+import ShareIcon from "@material-ui/icons/Share";
+
+import MoreVertIcon from "@material-ui/icons/MoreVert";
+import { CardMedia } from "@material-ui/core";
 
 const useStyles = makeStyles({
     bullet: {
@@ -19,33 +27,44 @@ const useStyles = makeStyles({
         marginBottom: 12,
     },
 });
-const CoffeeCard = () => {
+const CoffeeCard = (props) => {
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
+    const { avatarUrl, title, subtitle, description, imageUrl } = props;
     return (
         <Card>
+            <CardHeader
+                avatar={
+                    <Avatar
+                        aria-label="recipe"
+                        className={classes.avatar}
+                        src={avatarUrl}
+                    >
+                        R
+                    </Avatar>
+                }
+                action={
+                    <IconButton aria-label="settings">
+                        <ShareIcon />
+                    </IconButton>
+                }
+                title={title}
+                subheader={subtitle}
+            />
+            <CardMedia
+                className={classes.media}
+                style={{ height: "150px" }}
+                image={imageUrl}
+                title={imageUrl}
+            />
             <CardContent>
-                <Typography
-                    className={classes.title}
-                    color="textSecondary"
-                    gutterBottom
-                >
-                    Word of the Day
-                </Typography>
-                <Typography variant="h5" component="h2">
-                    be{bull}nev{bull}o{bull}lent
-                </Typography>
-                <Typography className={classes.pos} color="textSecondary">
-                    adjective
-                </Typography>
                 <Typography variant="body2" component="p">
-                    well meaning and kindly.
-                    <br />
-                    {'"a benevolent smile"'}
+                    {description}
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Learn More</Button>
+                <Button size="small">Buy Now</Button>
+                <Button size="small">Offer</Button>
             </CardActions>
         </Card>
     );
