@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { Grid } from "@material-ui/core";
 import Header from "./Header.jsx";
+import Content from "./Content";
 
 function App() {
     return (
@@ -11,15 +12,11 @@ function App() {
                     <Header />
                 </Grid>
                 <Grid item container>
-                    <Grid item xs={1} sm={2} />
-                    <Grid item xs={10} sm={8}>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. In soluta repellendus quas, quisquam tempora quam.
-                        Pariatur itaque natus nostrum excepturi similique.
-                        Minima adipisci impedit cum dolores eius reprehenderit
-                        corporis? Reiciendis.
+                    <Grid item xs={false} sm={2} />
+                    <Grid item xs={12} sm={8}>
+                        <Content />
                     </Grid>
-                    <Grid item xs={1} sm={2} />
+                    <Grid item xs={false} sm={2} />
                 </Grid>
             </Grid>
         </div>
